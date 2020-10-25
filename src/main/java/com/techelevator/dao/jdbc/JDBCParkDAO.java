@@ -2,7 +2,7 @@ package com.techelevator.dao.jdbc;
 
 import com.techelevator.dao.ParkDAO;
 import com.techelevator.model.Park;
-import com.techelevator.projects.model.Department;
+//import com.techelevator.projects.model.Department;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;

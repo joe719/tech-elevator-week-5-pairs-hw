@@ -1,6 +1,6 @@
 package com.techelevator.dao.jdbc;
 
-import com.techelevator.city.City;
+//import com.techelevator.city.City;
 import com.techelevator.dao.SiteDAO;
 import com.techelevator.model.Site;
 import org.springframework.jdbc.core.JdbcTemplate;
