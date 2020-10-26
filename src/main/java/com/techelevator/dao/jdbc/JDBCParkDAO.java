@@ -24,14 +24,14 @@ public class JDBCParkDAO implements ParkDAO {
     @Override
     public List<Park> getAllParks() {
 		List<Park> results = new ArrayList<>();
-		String sql = "SELECT park_id, name, location, establish_date, area, visitors, description FROM park";
+		String sql = "SELECT park_id, name, location, establish_date, area, visitors, description FROM park order by location asc";
 		SqlRowSet parks = jdbcTemplate.queryForRowSet(sql);
 		
 		while(parks.next()) {
 			Integer parkId = parks.getInt("park_id");
 			String name = parks.getString("name");
 			String location = parks.getString("location");
-			LocalDate establishDate = parks.getDate("estabish_date").toLocalDate();
+			LocalDate establishDate = parks.getDate("establish_date").toLocalDate();
 			Integer area = parks.getInt("area");
 			Integer visitors = parks.getInt("visitors");
 			String description = parks.getString("description");

@@ -22,10 +22,12 @@ public class JDBCSiteDAO implements SiteDAO {
     @Override
     public List<Site> getSitesThatAllowRVs(int parkId) {
 		ArrayList<Site> sites = new ArrayList<>();
-		String sqlFindRvSites = "SELECT site.site_id, site.campground_id, site.site_number, site.max_occupancy, site.accessible, site.max_rv_length "+
+		String sqlFindRvSites = "SELECT site.site_id, site.campground_id, site.site_number, site.max_occupancy, site.accessible, site.max_rv_length, site.utilities "+
 								"FROM site "+
 								"JOIN campground ON site.campground_id = campground.campground_id "+ 
-								"WHERE site.max_rv_length!=0";
+								"JOIN park ON campground.park_id = park.park_id " +
+								"WHERE site.max_rv_length!=0 AND park.park_id = ?";
+								
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlFindRvSites, parkId);
 		while(results.next()) {
 			Site theSite = mapRowToSite(results);
